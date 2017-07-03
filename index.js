@@ -3,7 +3,7 @@ var TEMPLATE = '<h1><span id="timer-minutes">00</span>:<span id="timer-seconds">
 
 // adds HTML tag to current page
 var timerContainer = document.createElement('div')
-timerContainer.setAttribute("style", "height: 100px;")
+timerContainer.setAttribute("style", "position: fixed;height: 100 px;width: 160px;padding-left: 25px;border: 3px solid #BADA55;;border-radius: 40px;z-index: 1;padding-bottom: 10px")
 var bodyTag = document.body
 bodyTag.insertBefore(timerContainer, bodyTag.firstChild)
 timerContainer.innerHTML = TEMPLATE
@@ -30,4 +30,5 @@ function displayTimer(){
   document.getElementById('timer-minutes').innerHTML = padZero(minutes)
   document.getElementById('timer-seconds').innerHTML = padZero(seconds)
 }
-setInterval(displayTimer, 300)
+setInterval(displayTimer, 300);
+
