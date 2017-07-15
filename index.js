@@ -3,32 +3,31 @@ var TEMPLATE = '<h1><span id="timer-minutes">00</span>:<span id="timer-seconds">
 
 // adds HTML tag to current page
 var timerContainer = document.createElement('div')
-timerContainer.setAttribute("style", "position: fixed;height: 100 px;width: 160px;padding-left: 25px;border: 3px solid #BADA55;;border-radius: 40px;z-index: 1;padding-bottom: 10px")
+timerContainer.setAttribute("style", "position: fixed;height: 100 px;width: 160px;background-color: blue;\
+                            border:3px solid #BADA55;text-align: center;border-radius: 40px;z-index: 1000;")
 var bodyTag = document.body
 bodyTag.insertBefore(timerContainer, bodyTag.firstChild)
 timerContainer.innerHTML = TEMPLATE
 
 function getTimestampInSecs(){
-  var timestampInMilliseconds = new Date().getTime()
-  return Math.round(timestampInMilliseconds/1000)
+    var timestampInMilliseconds = new Date().getTime()
+    return Math.round(timestampInMilliseconds/1000)
 }
 
 function padZero(number){
-  return ("00" + String(number)).slice(-2);
+    return ("00" + String(number)).slice(-2);
 }
 
 var timestampOnStart = getTimestampInSecs()
 
 function displayTimer(){
-  var currentTimestamp = getTimestampInSecs()
-  var secsGone = currentTimestamp - timestampOnStart
-  var secsLeft = Math.max(TIMEOUT_IN_SECS - secsGone, 0)
-
-  var minutes = Math.floor(secsLeft / 60);
-  var seconds = secsLeft - minutes * 60;
-
-  document.getElementById('timer-minutes').innerHTML = padZero(minutes)
-  document.getElementById('timer-seconds').innerHTML = padZero(seconds)
+    var currentTimestamp = getTimestampInSecs()
+    var secsGone = currentTimestamp - timestampOnStart
+    var secsLeft = Math.max(TIMEOUT_IN_SECS - secsGone, 0)
+    var minutes = Math.floor(secsLeft / 60);
+    var seconds = secsLeft - minutes * 60;
+    document.getElementById('timer-minutes').innerHTML = padZero(minutes)
+    document.getElementById('timer-seconds').innerHTML = padZero(seconds)
 }
 setInterval(displayTimer, 300);
 
